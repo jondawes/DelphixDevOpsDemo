@@ -84,9 +84,10 @@ if (parameterAction == "refresh") {
 } # end if
 
 ## Delete Environment
-#echo Delete Container
-#./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action delete -container_name GH_Container -dropvdb yes
+if (parameterAction == "delete") {
+    echo Delete Container
+    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action delete -container_name GH_Container -dropvdb yes
 
-#echo Delete Template
-#./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -action delete -template_name GH_Template
-
+    echo Delete Template
+    ./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -action delete -template_name GH_Template
+} end if

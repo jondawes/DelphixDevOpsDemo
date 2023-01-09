@@ -34,7 +34,7 @@ jobs:
       - name: Execute API via Shell Script
         id: exec_shell
         run: |
-          ./delete_env.sh 
+          ./data_ops.sh -a delete
 
       - name: Upload API Output log
         uses: actions/upload-artifact@v1
