@@ -2,7 +2,9 @@ name: refresh_environments
 
 on:
   push:
-    branches: [ refresh ]
+    branches: 
+      - '**'
+      - '!main'
 
 jobs:
 
