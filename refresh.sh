@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Standard Core Demo Env
-DLPX_ENGINE=uvo1vrkiamwhwjzfehl.vm.cld.sr
+DLPX_ENGINE=uvo1ezo6orp6mrdjwzd.vm.cld.sr
 
 
 curl -s -X POST -k --data @- http://$DLPX_ENGINE/resources/json/delphix/session \
