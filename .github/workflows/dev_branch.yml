@@ -1,4 +1,4 @@
-name: development_branches
+name: development_branches_create
 
 on:
   create:
@@ -31,3 +31,14 @@ jobs:
           ls -ltr >> ${{ env.FILENAME }}
           cd ..
           echo "`pwd`" >> ${{ env.FILENAME }}
+          
+      - name: Execute API via Shell Script
+        id: exec_shell
+        run: |
+          ./create_env.sh 
+
+      - name: Upload API Output log
+        uses: actions/upload-artifact@v1
+        with:
+          name: apilog
+          path: ${{ env.FILENAME }}
