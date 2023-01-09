@@ -21,6 +21,8 @@ git add *<br/>
 git commit -m "branch changes"<br/>
 git push<br/>
 
+git add . && git commit -m 'Refresh branch environment' && git push
+
 Goto github actions and see data fresh workflow take place<br/>
 Track in Delphix Engine<br/>
 Optional: validate data refreshed via deveops machine<br/>
