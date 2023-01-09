@@ -1,36 +1,41 @@
 # SugarCRM / MSSQL based DevOps Demo
-Deplpoy, refresh and delete an MSSQL instance based on github actions
 
-## Demo Flow
+Deploy, refresh and delete an MSSQL instance based on github actions
 
-# Create new branch
-Create a new branch in the GitHub GUI
-Got to Actions and see workflow kickoff
-Watch dataset get provisioned in Delphix Engine
-Watch database appear in SQL server / DevOps server
-Optional: Delete data to simulate issue/changes
+# Demo Flow
 
-# Edit branch
-Git Checkout <branchname> locally
-echo `date` > changefile 
-git add *
-git commit -m "branch changes"
-git push
+## Create new branch
 
-Goto github actions and see data fresh wqorkflow take place
-Track in Delphix Engine
-Optional: validate data refreshed via deveops machine
+Create a new branch in the GitHub GUI<br/>
+Got to Actions and see workflow kickoff<br/>
+Watch dataset get provisioned in Delphix Engine<br/>
+Watch database appear in SQL server / DevOps server<br/>
+Optional: Delete data to simulate issue/changes<br/>
 
-# Delete Branch
-in Github, create and finalise a merge request
-Then delete the branch
-watch workflows, engine and sever to see cleanup occur
-Optional: git checkout main
-show the changefile update has rolled in
+## Edit branch
 
-# Cleanup local git
-git checkout main
-git branch --merged
-git branch -d <branchname> (for each merged branch above)
-git remote prune origin
-git fetch -p  (?)
+Git Checkout <branchname> locally<br/>
+echo `date` > changefile <br/>
+git add *<br/>
+git commit -m "branch changes"<br/>
+git push<br/>
+
+Goto github actions and see data fresh wqorkflow take place<br/>
+Track in Delphix Engine<br/>
+Optional: validate data refreshed via deveops machine<br/>
+
+## Delete Branch
+
+in Github, create and finalise a merge request<br/>
+Then delete the branch<br/>
+watch workflows, engine and sever to see cleanup occur<br/>
+Optional: git checkout main<br/>
+show the changefile update has rolled in<br/>
+
+## Cleanup local git (or just delete it and checkout again)
+
+git checkout main<br/>
+git branch --merged<br/>
+git branch -d <branchname> (for each merged branch above)<br/>
+git remote prune origin<br/>
+git fetch -p  (?)<br/>
