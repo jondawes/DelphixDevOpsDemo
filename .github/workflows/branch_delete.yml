@@ -1,5 +1,4 @@
-name: delete_environments
-
+name: branch_delete
 on:
   delete
 

@@ -1,4 +1,4 @@
-name: development_branches_create
+name: branch_create
 
 on:
   create
