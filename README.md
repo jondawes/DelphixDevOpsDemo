@@ -18,6 +18,7 @@ git fetch
 git Checkout <branchname> locally<br/>
 ``echo `date` > changefile`` <br/>
 git add *<br/>
+git tag v<string><br/>
 git commit -m "branch changes"<br/>
 git push<br/>
 
