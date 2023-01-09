@@ -55,7 +55,7 @@ EOF
 echo done!
 
 ## Create environment
-if [[ parameterAction -eq "create" ]] {
+if [[ $parameterAction -eq "create" ]] {
 
     echo Provisioning vDB to Dev Group
     ./dxtoolkit2/dx_provision_vdb -d $DLPX_ENGINE -group DEV -sourcename Suitecrm_master -targetname GHvDB -dbname GHvDB -environment Sqlserver_Target -type mssql -envinst MSSQLSERVER
@@ -74,7 +74,7 @@ if [[ parameterAction -eq "create" ]] {
 
 
 ## Refresh Environment
-if [[ parameterAction -eq "refresh" ]] {
+if [[ $parameterAction -eq "refresh" ]] {
 
     echo Refresh VDB Container 
     ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE  -container_name GH_Container -action refresh
@@ -84,7 +84,7 @@ if [[ parameterAction -eq "refresh" ]] {
 } # end if
 
 ## Delete Environment
-if [[ parameterAction -eq "delete" ]] {
+if [[ $parameterAction -eq "delete" ]] {
     echo Delete Container
     ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action delete -container_name GH_Container -dropvdb yes
 
