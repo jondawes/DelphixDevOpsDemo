@@ -55,7 +55,8 @@ EOF
 echo done!
 
 ## Create environment
-if (parameterAction == "create") {
+if [[ $parameterAction == "create" ]] 
+then
 
     echo Provisioning vDB to Dev Group
     ./dxtoolkit2/dx_provision_vdb -d $DLPX_ENGINE -group DEV -sourcename Suitecrm_master -targetname GHvDB -dbname GHvDB -environment Sqlserver_Target -type mssql -envinst MSSQLSERVER
@@ -69,21 +70,30 @@ if (parameterAction == "create") {
     echo Create Bookmark Starting Version 1.0
     ./dxtoolkit2/dx_ctl_js_bookmarks -d $DLPX_ENGINE -bookmark_name "Starting Version 1.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
 
-} # End if
+fi # end if
 
 
 
 ## Refresh Environment
-#echo Refresh VDB Container 
-#./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE  -container_name GH_Container -action refresh
+if [[ $parameterAction == "refresh" ]]
+then
 
-#echo Create Bookmark Starting Version 2.0
-#./dxtoolkit2/dx_ctl_js_bookmarks  -d $DLPX_ENGINE -bookmark_name "Starting Version 2.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
+    echo Refresh VDB Container 
+    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE  -container_name GH_Container -action refresh
+
+    echo Create Bookmark Starting Version 2.0
+    ./dxtoolkit2/dx_ctl_js_bookmarks  -d $DLPX_ENGINE -bookmark_name "Starting Version 2.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
+
+fi # end if
 
 ## Delete Environment
-#echo Delete Container
-#./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action delete -container_name GH_Container -dropvdb yes
+if [[ $parameterAction == "delete" ]] 
+then
 
-#echo Delete Template
-#./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -action delete -template_name GH_Template
+    echo Delete Container
+    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action delete -container_name GH_Container -dropvdb yes
 
+    echo Delete Template
+    ./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -action delete -template_name GH_Template
+
+fi #end if

@@ -36,7 +36,7 @@ jobs:
       - name: Execute API via Shell Script
         id: exec_shell
         run: |
-          ./refresh.sh 
+          ./data_ops.sh -a refresh
 
       - name: Upload API Output log
         uses: actions/upload-artifact@v1
