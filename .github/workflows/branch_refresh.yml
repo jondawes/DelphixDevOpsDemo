@@ -1,4 +1,4 @@
-name: refresh_environments
+name: branch_refresh
 
 on:
   push:
