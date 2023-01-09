@@ -14,7 +14,7 @@ Optional: Delete data to simulate issue/changes<br/>
 
 ## Edit branch
 
-Git Checkout <branchname> locally<br/>
+git Checkout <branchname> locally<br/>
 ``echo `date` > changefile`` <br/>
 git add *<br/>
 git commit -m "branch changes"<br/>
