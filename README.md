@@ -18,11 +18,10 @@ git fetch
 git Checkout <branchname> locally<br/>
 ``echo `date` > changefile`` <br/>
 git add *<br/>
-git tag v<string><br/>
 git commit -m "branch changes"<br/>
 git push<br/>
 
-Goto github actions and see data fresh wqorkflow take place<br/>
+Goto github actions and see data fresh workflow take place<br/>
 Track in Delphix Engine<br/>
 Optional: validate data refreshed via deveops machine<br/>
 
