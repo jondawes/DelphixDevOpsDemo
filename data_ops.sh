@@ -13,6 +13,18 @@ DLPX_ENGINE=uvo1ezo6orp6mrdjwzd.vm.cld.sr
 
 ## End Variables
 
+## Check Operation
+
+while getopts "a:b:c:" opt
+do
+   case "$opt" in
+      a ) parameterAction="$OPTARG" ;;
+      #b ) parameterB="$OPTARG" ;;
+      #c ) parameterC="$OPTARG" ;;
+      #? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
+   esac
+done
+
 ## Login to Engine
 echo Logging into the engine
 
@@ -43,17 +55,23 @@ EOF
 echo done!
 
 ## Create environment
-echo Provisioning vDB to Dev Group
-./dxtoolkit2/dx_provision_vdb -d $DLPX_ENGINE -group DEV -sourcename Suitecrm_master -targetname GHvDB -dbname GHvDB -environment Sqlserver_Target -type mssql -envinst MSSQLSERVER
+if (parameterAction == "create") {
 
-echo Create Self-Service Template
-./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -source 'Source,Suitecrm_master,Suitecrm_master,1' -action create -template_name GH_Template
+    echo Provisioning vDB to Dev Group
+    ./dxtoolkit2/dx_provision_vdb -d $DLPX_ENGINE -group DEV -sourcename Suitecrm_master -targetname GHvDB -dbname GHvDB -environment Sqlserver_Target -type mssql -envinst MSSQLSERVER
 
-echo Create Self-Service Container
-./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action create -container_def 'DEV,GHvDB' -container_name GH_Container -template_name GH_Template -container_owner dev -dontrefresh
+    echo Create Self-Service Template
+    ./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -source 'Source,Suitecrm_master,Suitecrm_master,1' -action create -template_name GH_Template
 
-echo Create Bookmark Starting Version 1.0
-./dxtoolkit2/dx_ctl_js_bookmarks -d $DLPX_ENGINE -bookmark_name "Starting Version 1.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
+    echo Create Self-Service Container
+    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action create -container_def 'DEV,GHvDB' -container_name GH_Container -template_name GH_Template -container_owner dev -dontrefresh
+
+    echo Create Bookmark Starting Version 1.0
+    ./dxtoolkit2/dx_ctl_js_bookmarks -d $DLPX_ENGINE -bookmark_name "Starting Version 1.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
+
+} # End if
+
+
 
 ## Refresh Environment
 #echo Refresh VDB Container 
