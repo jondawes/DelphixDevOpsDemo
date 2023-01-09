@@ -69,16 +69,19 @@ if (parameterAction == "create") {
     echo Create Bookmark Starting Version 1.0
     ./dxtoolkit2/dx_ctl_js_bookmarks -d $DLPX_ENGINE -bookmark_name "Starting Version 1.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
 
-} # End if
+} # end if
 
 
 
 ## Refresh Environment
-#echo Refresh VDB Container 
-#./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE  -container_name GH_Container -action refresh
+if (parameterAction == "refresh") {
 
-#echo Create Bookmark Starting Version 2.0
-#./dxtoolkit2/dx_ctl_js_bookmarks  -d $DLPX_ENGINE -bookmark_name "Starting Version 2.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
+    echo Refresh VDB Container 
+    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE  -container_name GH_Container -action refresh
+
+    echo Create Bookmark Starting Version 2.0
+    ./dxtoolkit2/dx_ctl_js_bookmarks  -d $DLPX_ENGINE -bookmark_name "Starting Version 2.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
+} # end if
 
 ## Delete Environment
 #echo Delete Container
