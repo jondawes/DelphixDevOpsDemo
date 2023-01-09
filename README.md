@@ -12,6 +12,11 @@ Watch dataset get provisioned in Delphix Engine<br/>
 Watch database appear in SQL server / DevOps server<br/>
 Optional: Delete data to simulate issue/changes<br/>
 
+Or via CLI:<br/>
+git branch DevBranch<br/>
+git checkout DevBranch<br/>
+git push --set-upstream origin DevBranch
+
 ## Edit branch
 
 git fetch 
