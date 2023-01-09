@@ -1,20 +1,21 @@
-name: development_branches_create
+name: delete_environments
 
 on:
-  create
+  delete
 
 jobs:
 
   ubuntu-latest:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout demo_repo_2 code
+      - name: Checkout demo_repo_2 Code
         uses: actions/checkout@master
       - name: Name Files
         id: name_file
         run: |
           FILENAME="myoutputfile.txt"
           echo "FILENAME=$FILENAME" >> $GITHUB_ENV
+
 
       - name: Install dxtoolkit
         id: install_dxtoolkit
@@ -29,11 +30,11 @@ jobs:
           ls -ltr >> ${{ env.FILENAME }}
           cd ..
           echo "`pwd`" >> ${{ env.FILENAME }}
-          
+
       - name: Execute API via Shell Script
         id: exec_shell
         run: |
-          ./create_env.sh 
+          ./delete_env.sh 
 
       - name: Upload API Output log
         uses: actions/upload-artifact@v1
