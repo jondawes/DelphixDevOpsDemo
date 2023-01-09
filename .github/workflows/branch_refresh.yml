@@ -3,8 +3,8 @@ name: branch_refresh
 on:
   workflow_dispatch:
   push:
-    tags:
-      - v*
+    paths:
+      - changefile
 
 jobs:
 
