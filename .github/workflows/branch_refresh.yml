@@ -14,10 +14,6 @@ jobs:
       - name: checkout demo_repo_2 code
         uses: actions/checkout@master
       
-      - name: Exit on master
-        if: endsWith(github.ref, 'true') == true
-        run: exit -1
-
       - name: Name Files
         id: name_file
         run: |
