@@ -3,17 +3,21 @@ name: branch_refresh
 on:
   workflow_dispatch:
   push:
-    branches-ignore:
-      - main
+    #branches-ignore:
+    #  - main
 
 jobs:
 
   ubuntu-latest:
     runs-on: ubuntu-latest
     steps:
+
       - name: checkout demo_repo_2 code
         uses: actions/checkout@master
       
+      - name: exit on create event
+        run: echo '${{ toJSON(github) }}'
+
       - name: Name Files
         id: name_file
         run: |
