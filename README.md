@@ -42,8 +42,8 @@ show the changefile update has rolled in<br/>
 
 ## Cleanup local git (or just delete it and checkout again)
 
-git checkout main<br/>
-git branch --merged<br/>
-git branch -d <branchname> (for each merged branch above)<br/>
+git checkout main && git pull && git fetch<br/>
+git branch <br/>
+git branch -d <branchname> (for each branch output above to be deleted)<br/>
 git remote prune origin<br/>
 git fetch -p  (?)<br/>
