@@ -10,6 +10,7 @@ jobs:
 
   ubuntu-latest:
     runs-on: ubuntu-latest
+    if: ${{ github.event.created == "true" }}
     steps:
 
       - name: checkout demo_repo_2 code
