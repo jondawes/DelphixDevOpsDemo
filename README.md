@@ -5,7 +5,7 @@ Deploy, refresh and delete an MSSQL instance based on github actions
 
 # Pre-Reqs
 
-# DBeaver setup
+## DBeaver setup
 
 create a new connection under SQL Server:
 host: 10.160.1.62
