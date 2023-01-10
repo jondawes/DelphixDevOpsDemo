@@ -2,6 +2,23 @@
 
 Deploy, refresh and delete an MSSQL instance based on github actions
 
+
+# Pre-Reqs
+
+# DBeaver setup
+
+create a new connection under SQL Server:
+host: 10.160.1.62
+port: 1433
+Database/Schema: GHvDB
+Username: sa
+Password: (sa password from lab passwords sheet)
+
+Right click on dbo and SQL Editor > Open SQL Console
+select * from contacts;
+CTRL+ENTER
+
+
 # Demo Flow
 
 ## Create new branch
@@ -11,6 +28,7 @@ Got to Actions and see workflow kickoff<br/>
 Watch dataset get provisioned in Delphix Engine<br/>
 Watch database appear in SQL server / DevOps server<br/>
 Optional: Delete data to simulate issue/changes<br/>
+
 
 Or via CLI:<br/>
 git branch DevBranch<br/>
