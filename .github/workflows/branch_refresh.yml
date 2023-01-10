@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@master
       
       - name: exit on create event
-        run: echo '${{ toJSON(github) }}'
+        run: echo '${{ toJSON(github.event.created) }}'
 
       - name: Name Files
         id: name_file
