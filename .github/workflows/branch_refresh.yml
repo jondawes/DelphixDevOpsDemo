@@ -3,8 +3,8 @@ name: branch_refresh
 on:
   workflow_dispatch:
   push:
-    paths:
-      - changefile
+    branches-ignore:
+      - main
 
 jobs:
 
