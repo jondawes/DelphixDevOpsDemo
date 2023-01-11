@@ -2,13 +2,13 @@ name: branch_refresh
 
 on:
   workflow_dispatch:
-  push:
-    branches-ignore:
-      - main
+  #push:
+  #  branches-ignore:
+  #    - main
 
 jobs:
 
-  ubuntu-latest:
+  refresh_data:
     runs-on: ubuntu-latest
     if: ${{ contains('false',github.event.created) && contains('false',github.event.deleted)  }}
     steps:
