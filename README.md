@@ -4,6 +4,10 @@ Deploy, refresh and delete an MSSQL instance based on github actions.
 
 # Pre-Reqs
 
+## Configure scripts
+
+Update the follwing files with the correct addresses for your environment
+
 ## Start MSSQL Environments
 
 Run the Datasource Sqlserver > Sqlserver_start pipeline in Jenkins to ensure MSSQL environments are available.
@@ -11,11 +15,11 @@ Run the Datasource Sqlserver > Sqlserver_start pipeline in Jenkins to ensure MSS
 ## DBeaver setup
 
 create a new connection under SQL Server:
-host: 10.160.1.62
-port: 1433
-Database/Schema: GHvDB
-Username: sa
-Password: (sa password from lab passwords sheet)
+- host: 10.160.1.62
+- port: 1433
+- Database/Schema: GHvDB
+- Username: sa
+- Password: (sa password from lab passwords sheet)
 
 Right click on dbo and SQL Editor > Open SQL Console
 select * from contacts;
