@@ -25,7 +25,7 @@ CTRL+ENTER
 
 ## Create new branch
 
-`git branch DevBranch && git checkout DevBranch && git commit --allow-empty "Created DevBranch from main" && git push --set-upstream origin DevBranch`<br/>
+`git branch DevBranch && git checkout DevBranch && git commit --allow-empty -m "Created DevBranch from main" && git push --set-upstream origin DevBranch`<br/>
 Go to Actions and see workflow kickoff<br/>
 Watch dataset get provisioned in Delphix Engine<br/>
 Watch database appear in SQL server / DevOps server
