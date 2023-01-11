@@ -34,7 +34,6 @@ Optional: Delete data to simulate issue/changes<br/>
 
 ## Edit branch
 
-`git fetch` <br/>
 ``echo `date` > changefile`` <br/>
 `git add . && git commit -m 'Refresh branch environment' && git push`
 
