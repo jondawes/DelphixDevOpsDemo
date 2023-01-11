@@ -1,10 +1,10 @@
-name: branch_refresh
+name: branch_data_ops
 
 on:
   workflow_dispatch:
-  push:
-    branches-ignore:
-      - main
+#  push:
+#    branches-ignore:
+#      - main
 
 jobs:
 
