@@ -19,7 +19,8 @@ Inside the Cloudshare environment run the Datasource Sqlserver > Sqlserver_start
 ## Open lab environments
 Ideally you want to have the following screens prepared for the runthrough:
 - a terminal with this repositorty checked out and up to date
-- This GitHub reposiroty in a browser on the Actions tab
+- This GitHub repository in a browser on the Actions tab (customer visible)
+- This page in a browser to enable copy and paste of commands (not customer visible)
 - Delphix Engine management interface
 - Delphix Engine self service interface
 - Developer VM with DBeaver open and SQL consoles pre-configured with SQL commands for the GH DB
