@@ -6,7 +6,11 @@ Deploy, refresh and delete an MSSQL instance based on github actions.
 
 ## Configure scripts
 
-Update the follwing files with the correct addresses for your environment
+Update the follwing files with the correct addresses for your environment:
+- data_ops.sh - edit Variables section at the top fo the script as noted in the file
+- dxtoolkit2/dxtools.conf - Update hostname and ip_address with the public URL of your Delphic engine e.g.:
+    - "hostname": "uvo1ezo6orp6mrdjwzd.vm.cld.sr",
+	- "ip_address": "uvo1ezo6orp6mrdjwzd.vm.cld.sr",
 
 ## Start MSSQL Environments
 
@@ -14,16 +18,17 @@ Run the Datasource Sqlserver > Sqlserver_start pipeline in Jenkins to ensure MSS
 
 ## DBeaver setup
 
-create a new connection under SQL Server:
+Create a new connection under SQL Server:
 - host: 10.160.1.62
 - port: 1433
 - Database/Schema: GHvDB
 - Username: sa
 - Password: (sa password from lab passwords sheet)
 
-Right click on dbo and SQL Editor > Open SQL Console
-select * from contacts;
-CTRL+ENTER
+Right click on dbo and SQL Editor > Open SQL Console and enter the following lines:
+- `select * from contacts;`  Use to show contents are available
+- `drop TABLE contacts;`    Use to delete data to show refresh works
+Place cursor on either line and hit CTRL+ENTER to run
 
 # Demo Flow
 
