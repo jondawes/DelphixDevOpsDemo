@@ -1,6 +1,6 @@
 # SugarCRM / MSSQL based DevOps Demo
 
-Deploy, refresh and delete an MSSQL instance based on github actions.
+Deploy, refresh and delete an MSSQL instance based on github actions. Used the standard Delphix Cloudshare lab environment to support a DevOps focussed demo.
 
 # Pre-Reqs
 
@@ -9,12 +9,21 @@ Deploy, refresh and delete an MSSQL instance based on github actions.
 Update the follwing files with the correct addresses for your environment:
 - data_ops.sh - edit Variables section at the top fo the script as noted in the file
 - dxtoolkit2/dxtools.conf - Update hostname and ip_address with the public URL of your Delphic engine e.g.:
-    - "hostname": "uvo1ezo6orp6mrdjwzd.vm.cld.sr",
-	- "ip_address": "uvo1ezo6orp6mrdjwzd.vm.cld.sr",
+    - `"hostname": "uvo1ezo6orp6mrdjwzd.vm.cld.sr",`
+	- `"ip_address": "uvo1ezo6orp6mrdjwzd.vm.cld.sr",`
 
 ## Start MSSQL Environments
 
-Run the Datasource Sqlserver > Sqlserver_start pipeline in Jenkins to ensure MSSQL environments are available.
+Inside the Cloudshare environment run the Datasource Sqlserver > Sqlserver_start pipeline in Jenkins to ensure MSSQL environments are available.
+
+## Open lab environments
+Ideally you want to have the following screens prepared for the runthrough:
+- a terminal with this repositorty checked out and up to date
+- This GitHub reposiroty in a browser on the Actions tab
+- Delphix Engine management interface
+- Delphix Engine self service interface
+- Developer VM with DBeaver open and SQL consoles pre-configured with SQL commands for the GH DB
+- Optionally the SQL Server Target VM to show the drive mount process with the Disk Management MMC
 
 ## DBeaver setup
 
@@ -34,31 +43,29 @@ Place cursor on either line and hit CTRL+ENTER to run
 
 ## Create new branch
 
-`git branch DevBranch && git checkout DevBranch && git commit --allow-empty -m "Created DevBranch from main" && git push --set-upstream origin DevBranch`<br/>
-Go to Actions and see workflow kickoff<br/>
-Watch dataset get provisioned in Delphix Engine<br/>
-Watch database appear in SQL server / DevOps server
-
-Optional: Delete data to simulate issue/changes<br/>
+- `git branch DevBranch && git checkout DevBranch && git commit --allow-empty -m "Created DevBranch from main" && git push --set-upstream origin DevBranch`
+- Go to Actions in the GitHub repository and watch workflow kickoff
+- Watch dataset get provisioned in Delphix Engine
+- Show the Self Service container and highlight the operations available
+- Optional: Watch database appear in SQL server / DevOps server
+- Optional: Delete data to simulate issue/changes via DBeaver
 
 ## Edit branch
 
-``echo `date` > changefile`` <br/>
-`git add . && git commit -m 'Refresh branch environment' && git push`
-
-Goto github actions and see data refresh workflow take place<br/>
-Track in Delphix Engine & Self Service portal<br/>
-
-Optional: validate data refreshed via deveops machine<br/>
+- ``echo `date` > changefile`` 
+- `git add . && git commit -m 'Refresh branch environment' && git push`
+- Goto github actions and see data refresh workflow take place
+- Track in Delphix Engine & Self Service portal
+- Optional: Show data restored in DBeaver
 
 ## Delete Branch
 
-In Github, create and finalise a merge request, then delete the branch.<br/>
-Watch workflows, engine and sever to see cleanup occur<br/>
+- In Github, create and finalise a merge request, then delete the branch.
+- Watch workflows, engine and sever to see cleanup occur
 
 ## Cleanup local git (or just delete it and checkout again)
 
-`git checkout main && git pull && git fetch`<br/>
-Optional: show the changefile update has rolled into main<br/>
-`git remote prune origin`<br/>
-`git branch -d DevBranch` (for each branch output above to be deleted)<br/>
+- `git checkout main && git pull && git fetch`
+- Optional: show the changefile update has rolled into main (if not emoing this, the cleanup section can be done post demo)
+- `git remote prune origin`
+- `git branch -d DevBranch` 
