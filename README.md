@@ -57,12 +57,12 @@ Optional: validate data refreshed via deveops machine<br/>
 in Github, create and finalise a merge request<br/>
 Then delete the branch<br/>
 watch workflows, engine and sever to see cleanup occur<br/>
-Optional: git checkout main<br/>
-show the changefile update has rolled in<br/>
+
 
 ## Cleanup local git (or just delete it and checkout again)
 
 git checkout main && git pull && git fetch<br/>
+Optional: show the changefile update has rolled in<br/>
 git branch <br/>
 git branch -d <branchname> (for each branch output above to be deleted)<br/>
 git remote prune origin<br/>
