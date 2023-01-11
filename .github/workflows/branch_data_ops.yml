@@ -14,6 +14,9 @@ jobs:
       - name: checkout code
         uses: actions/checkout@master
 
+      - name: debug - check event details
+        run: echo '${{ toJSON(github) }}'
+
       - name: Name Files
         id: name_file
         run: |
@@ -34,35 +37,55 @@ jobs:
           cd ..
           echo "`pwd`" >> ${{ env.FILENAME }}
 
-  create_data:
-    needs: setup
-    runs-on: ubuntu-latest
-    if: ${{ contains('true',github.event.created) }}
-    steps: 
-      - name: Execute API create via Shell Script
+      # Create VDB for creates
+      - name: Execute API create via Shell Script if this is a new branch
+        if: ${{ contains('true',github.event.created) }}
+        id: exec_shell
+        run: |
+            ./data_ops.sh -a create
+
+      # Refresh VDB for pushes
+      - name: Execute API refresh via Shell Script if this not a new branch
+        if: ${{ contains('false',github.event.created) && contains('false',github.event.deleted)  }}
         id: exec_shell
         run: |
           ./data_ops.sh -a refresh
 
-  refresh_data:
-    needs: setup
-    runs-on: ubuntu-latest
-    if: ${{ contains('false',github.event.created) && contains('false',github.event.deleted)  }}
-    steps:
-      - name: Execute API refresh via Shell Script
-        id: exec_shell
-        run: |
-          ./data_ops.sh -a refresh
+      - name: Upload API Output log
+        uses: actions/upload-artifact@v1
+        with:
+          name: apilog
+          path: ${{ env.FILENAME }}
+
+#  create_data:
+#    needs: setup
+#    runs-on: ubuntu-latest
+#    if: ${{ contains('true',github.event.created) }}
+#    steps: 
+#      - name: Execute API create via Shell Script
+#        id: exec_shell
+#        run: |
+#          ./data_ops.sh -a refresh
+
+#  refresh_data:
+#    needs: setup
+#    runs-on: ubuntu-latest
+#    if: ${{ contains('false',github.event.created) && contains('false',github.event.deleted)  }}
+#    steps:
+#      - name: Execute API refresh via Shell Script
+#        id: exec_shell
+#        run: |
+#          ./data_ops.sh -a refresh
     
-  delete_data:
-    needs: setup
-    runs-on: ubuntu-latest
-    if: ${{ contains('true',github.event.deleted) }}
-    steps: 
-      - name: Execute API delete via Shell Script
-        id: exec_shell
-        run: |
-          ./data_ops.sh -a delete
+#  delete_data:
+#    needs: setup
+#    runs-on: ubuntu-latest
+#    if: ${{ contains('true',github.event.deleted) }}
+#    steps: 
+#      - name: Execute API delete via Shell Script
+#        id: exec_shell
+#        run: |
+#          ./data_ops.sh -a delete
 
     
 #    finalise:
