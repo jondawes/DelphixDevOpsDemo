@@ -16,7 +16,7 @@ jobs:
       - name: checkout demo_repo_2 code
         uses: actions/checkout@master
       
-      - name: exit on create event
+      - name: debug - check event details
         run: echo '${{ toJSON(github) }}'
 
       - name: Name Files

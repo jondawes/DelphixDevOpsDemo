@@ -11,12 +11,15 @@ jobs:
     steps:
       - name: Checkout demo_repo_2 Code
         uses: actions/checkout@master
+
+      - name: debug - check event details
+        run: echo '${{ toJSON(github) }}'
+
       - name: Name Files
         id: name_file
         run: |
           FILENAME="myoutputfile.txt"
           echo "FILENAME=$FILENAME" >> $GITHUB_ENV
-
 
       - name: Install dxtoolkit
         id: install_dxtoolkit

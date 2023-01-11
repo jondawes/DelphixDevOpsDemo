@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: checkout demo_repo_2 code
         uses: actions/checkout@master
+
+      - name: debug - check event details
+        run: echo '${{ toJSON(github) }}'
+
       - name: Name Files
         id: name_file
         run: |
