@@ -35,6 +35,8 @@ git branch DevBranch<br/>
 git checkout DevBranch<br/>
 git push --set-upstream origin DevBranch
 
+git branch DevBranch && git checkout DevBranch && git push --set-upstream origin DevBranch
+
 ## Edit branch
 
 git fetch 
