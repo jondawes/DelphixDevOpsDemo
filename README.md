@@ -25,7 +25,7 @@ CTRL+ENTER
 
 ## Create new branch
 
-`git branch DevBranch && git checkout DevBranch && git push --set-upstream origin DevBranch`<br/>
+`git branch DevBranch && git checkout DevBranch && git commit --allow-empty "Created DevBranch from main" && git push --set-upstream origin DevBranch`<br/>
 Go to Actions and see workflow kickoff<br/>
 Watch dataset get provisioned in Delphix Engine<br/>
 Watch database appear in SQL server / DevOps server
@@ -53,4 +53,4 @@ Watch workflows, engine and sever to see cleanup occur<br/>
 `git checkout main && git pull && git fetch`<br/>
 Optional: show the changefile update has rolled into main<br/>
 `git remote prune origin`<br/>
-? `git branch -d <branchname>` (for each branch output above to be deleted)<br/>
+`git branch -d DevBranch` (for each branch output above to be deleted)<br/>
