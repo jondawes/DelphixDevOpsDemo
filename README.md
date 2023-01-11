@@ -18,7 +18,7 @@ Inside the Cloudshare environment run the Datasource Sqlserver > Sqlserver_start
 
 ## Open lab environments
 Ideally you want to have the following screens prepared for the runthrough:
-- a terminal with this repositorty checked out and up to date
+- A terminal with this repositorty checked out and up to date
 - This GitHub repository in a browser on the Actions tab (customer visible)
 - This page in a browser to enable copy and paste of commands (not customer visible)
 - Delphix Engine management interface
@@ -67,6 +67,6 @@ Place cursor on either line and hit CTRL+ENTER to run
 ## Cleanup local git (or just delete it and checkout again)
 
 - `git checkout main && git pull && git fetch`
-- Optional: show the changefile update has rolled into main (if not emoing this, the cleanup section can be done post demo)
+- Optional: show the changefile update has rolled into main (if not doing this, the cleanup section can be done post demo)
 - `git remote prune origin`
 - `git branch -d DevBranch` 
