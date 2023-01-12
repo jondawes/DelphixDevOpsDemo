@@ -4,8 +4,8 @@
 # Standard Core Demo Env details - MUST be updated for new demo environment
 DLPX_ENGINE=uvo1ezo6orp6mrdjwzd.vm.cld.sr
 
-#Naming conventions, can be updated if desired
-DLPX_TEMPLATE_NAME="SuiteCRM Demo"
+#Naming conventions, can be updated if desired. Defaults in comments
+DLPX_TEMPLATE_NAME="SuiteCRM Demo"      # "SuiteCRM Demo" (enables sharing bookmarks with the other containers that already exist)
 #GROUP_NAME=
 #dSOURCE_NAME=
 #TARGET_NAME=
