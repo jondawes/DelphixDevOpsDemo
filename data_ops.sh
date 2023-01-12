@@ -5,7 +5,7 @@
 DLPX_ENGINE=uvo1ezo6orp6mrdjwzd.vm.cld.sr
 
 #Naming conventions, can be updated if desired. Defaults in comments
-DLPX_TEMPLATE_NAME="'SuiteCRM Demo'"      # "SuiteCRM Demo" (enables sharing bookmarks with the other containers that already exist)
+DLPX_TEMPLATE_NAME='"SuiteCRM Demo"'      # "SuiteCRM Demo" (enables sharing bookmarks with the other containers that already exist)
 #GROUP_NAME=
 #dSOURCE_NAME=
 #TARGET_NAME=
@@ -69,7 +69,7 @@ then
     ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action create -container_def 'DEV,GHvDB' -container_name GH_Container -template_name $DLPX_TEMPLATE_NAME -container_owner dev -dontrefresh
 
     echo Create Bookmark Starting Version 1.0
-    ./dxtoolkit2/dx_ctl_js_bookmarks -d $DLPX_ENGINE -bookmark_name "Starting Version 1.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
+    ./dxtoolkit2/dx_ctl_js_bookmarks -d $DLPX_ENGINE -bookmark_name "Starting Version 1.0" -bookmark_time latest -container_name GH_Container -action create -template_name $DLPX_TEMPLATE_NAME
 
 fi # end if
 
