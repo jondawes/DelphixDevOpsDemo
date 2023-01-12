@@ -1,0 +1,15 @@
+# SQL Statements
+
+select * from contacts;
+drop TABLE contacts;
+
+# Git Statements
+
+git branch DevBranch && git checkout DevBranch && git commit --allow-empty -m "Created DevBranch from main" && git push --set-upstream origin DevBranch
+
+echo `date` > changefile
+git add . && git commit -m 'Refresh branch environment' && git push
+
+git checkout main && git pull && git fetch
+git remote prune origin
+git branch -d DevBranch
