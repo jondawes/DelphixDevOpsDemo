@@ -1,7 +1,8 @@
 # SQL Statements
 
-select * from contacts;
-drop TABLE contacts;
+select * from dbo.contacts;
+select id, first_name, last_name, Primary_address_street, primary_address_city, primary_address_state, phone_home, description from dbo.contacts;
+drop TABLE dbo.contacts;
 
 # Git Statements
 
