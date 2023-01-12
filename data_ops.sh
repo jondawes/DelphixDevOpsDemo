@@ -94,7 +94,7 @@ then
     echo Delete Container
     ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action delete -container_name GH_Container -dropvdb yes
 
-    echo Delete Template
-    ./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -action delete -template_name $DLPX_TEMPLATE_NAME
+    #echo Delete Template - Don't delete as we are using a pre-existing template
+    #./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -action delete -template_name $DLPX_TEMPLATE_NAME
 
 fi #end if
