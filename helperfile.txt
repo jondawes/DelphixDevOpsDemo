@@ -10,6 +10,8 @@ git branch DevBranch && git checkout DevBranch && git commit --allow-empty -m "C
 echo `date` > changefile
 git add . && git commit -m 'Refresh branch environment' && git push
 
-git checkout main && git pull && git fetch
+git checkout main && git pull && git fetch 
 git remote prune origin && git branch -D DevBranch
 git branch
+
+git checkout main && git pull && git fetch && git remote prune origin && git branch -D DevBranch
