@@ -5,6 +5,7 @@
 DLPX_ENGINE=uvo1ezo6orp6mrdjwzd.vm.cld.sr
 
 #Naming conventions, can be updated if desired
+DLPX_TEMPLATE_NAME="SuiteCRM Demo"
 #GROUP_NAME=
 #dSOURCE_NAME=
 #TARGET_NAME=
@@ -61,11 +62,11 @@ then
     echo Provisioning vDB to Dev Group
     ./dxtoolkit2/dx_provision_vdb -d $DLPX_ENGINE -group DEV -sourcename Suitecrm_master -targetname GHvDB -dbname GHvDB -environment Sqlserver_Target -type mssql -envinst MSSQLSERVER
 
-    echo Create Self-Service Template
-    ./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -source 'Source,Suitecrm_master,Suitecrm_master,1' -action create -template_name GH_Template
+    #echo Create Self-Service Template - placing in existing SuiteCRM Demo template now to enable sharing
+    #./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -source 'Source,Suitecrm_master,Suitecrm_master,1' -action create -template_name GH_Template
 
     echo Create Self-Service Container
-    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action create -container_def 'DEV,GHvDB' -container_name GH_Container -template_name GH_Template -container_owner dev -dontrefresh
+    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action create -container_def 'DEV,GHvDB' -container_name GH_Container -template_name $DLPX_TEMPLATE_NAME -container_owner dev -dontrefresh
 
     echo Create Bookmark Starting Version 1.0
     ./dxtoolkit2/dx_ctl_js_bookmarks -d $DLPX_ENGINE -bookmark_name "Starting Version 1.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
@@ -82,7 +83,7 @@ then
     ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE  -container_name GH_Container -action refresh
 
     echo Create Bookmark Starting Version 2.0
-    ./dxtoolkit2/dx_ctl_js_bookmarks  -d $DLPX_ENGINE -bookmark_name "Starting Version 2.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
+    ./dxtoolkit2/dx_ctl_js_bookmarks  -d $DLPX_ENGINE -bookmark_name "Starting Version 2.0" -bookmark_time latest -container_name GH_Container -action create -template_name $DLPX_TEMPLATE_NAME
 
 fi # end if
 
@@ -94,6 +95,6 @@ then
     ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action delete -container_name GH_Container -dropvdb yes
 
     echo Delete Template
-    ./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -action delete -template_name GH_Template
+    ./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -action delete -template_name $DLPX_TEMPLATE_NAME
 
 fi #end if
