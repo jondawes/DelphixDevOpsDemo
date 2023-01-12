@@ -6,6 +6,8 @@ drop TABLE dbo.contacts;
 
 # Git Statements
 
+git checkout main && git pull && git fetch 
+
 git branch DevBranch && git checkout DevBranch && git commit --allow-empty -m "Created DevBranch from main" && git push --set-upstream origin DevBranch
 
 echo `date` > changefile
