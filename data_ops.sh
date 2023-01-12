@@ -66,7 +66,7 @@ then
     #./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -source 'Source,Suitecrm_master,Suitecrm_master,1' -action create -template_name GH_Template
 
     echo Create Self-Service Container
-    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action create -container_def 'DEV,GHvDB' -container_name GH_Container -template_name $DLPX_TEMPLATE_NAME -container_owner dev -dontrefresh
+    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action create -container_def 'DEV,GHvDB' -container_name GH_Container -template_name '$DLPX_TEMPLATE_NAME' -container_owner dev -dontrefresh
 
     echo Create Bookmark Starting Version 1.0
     ./dxtoolkit2/dx_ctl_js_bookmarks -d $DLPX_ENGINE -bookmark_name "Starting Version 1.0" -bookmark_time latest -container_name GH_Container -action create -template_name GH_Template
@@ -83,7 +83,7 @@ then
     ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE  -container_name GH_Container -action refresh
 
     echo Create Bookmark Starting Version 2.0
-    ./dxtoolkit2/dx_ctl_js_bookmarks  -d $DLPX_ENGINE -bookmark_name "Starting Version 2.0" -bookmark_time latest -container_name GH_Container -action create -template_name $DLPX_TEMPLATE_NAME
+    ./dxtoolkit2/dx_ctl_js_bookmarks  -d $DLPX_ENGINE -bookmark_name "Starting Version 2.0" -bookmark_time latest -container_name GH_Container -action create -template_name '$DLPX_TEMPLATE_NAME'
 
 fi # end if
 
