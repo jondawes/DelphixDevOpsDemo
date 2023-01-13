@@ -1,8 +1,15 @@
 # SQL Statements
 
-select * from dbo.contacts;
+## Useful list of contact dat for masking compare
 select id, first_name, last_name, Primary_address_street, primary_address_city, primary_address_state, phone_home, description from dbo.contacts;
+
+## Pull out specific record added during demo
 select id, first_name, last_name, Primary_address_street, primary_address_city, primary_address_state, phone_home, description from dbo.contacts where dbo.contacts.id='58ad9c21-ce82-ed6d-e325-63c0cd5547c5';
+
+## Find added record if needed, assuming address is blank
+select id, first_name, last_name, Primary_address_street, primary_address_city, primary_address_state, phone_home, description from dbo.contacts where dbo.contacts.Primary_address_street='';
+
+## Break a database for self service demo
 drop TABLE dbo.contacts;
 
 # Git Statements
