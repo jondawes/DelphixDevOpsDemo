@@ -17,7 +17,7 @@ drop TABLE dbo.contacts;
 
 # Git Statements for Demo
 
-## Get Ready
+## Get Ready / prove real
 git checkout main && git pull && git fetch 
 
 ## Create branch - one liner
