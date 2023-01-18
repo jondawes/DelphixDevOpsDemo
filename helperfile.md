@@ -6,6 +6,8 @@
 ## Useful list of contact data for masking compare
 select id, first_name, last_name, Primary_address_street, primary_address_city, primary_address_state, phone_home, description from dbo.contacts;
 
+select id, first_name, last_name, Primary_address_street, primary_address_city, primary_address_state, phone_home, description from dbo.contacts order by date_entered DESC;
+
 ## Pull out specific record added during demo
 select id, first_name, last_name, Primary_address_street, primary_address_city, primary_address_state, phone_home, description from dbo.contacts where dbo.contacts.id='XXX';
 
