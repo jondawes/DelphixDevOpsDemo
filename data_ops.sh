@@ -62,9 +62,6 @@ then
     echo Provisioning vDB to Dev Group based on Suitecrm_MASK source
     ./dxtoolkit2/dx_provision_vdb -d $DLPX_ENGINE -group DEV -sourcename Suitecrm_MASK -targetname GHvDB -dbname GHvDB -environment Sqlserver_Target -type mssql -envinst MSSQLSERVER
 
-    #echo Create Self-Service Template - placing in existing SuiteCRM Demo template now to enable sharing
-    #./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -source 'Source,Suitecrm_master,Suitecrm_master,1' -action create -template_name GH_Template
-
     echo Create Self-Service Container
     ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action create -container_def 'DEV,GHvDB' -container_name GH_Container -template_name "$DLPX_TEMPLATE_NAME" -container_owner dev -dontrefresh
 
@@ -94,7 +91,5 @@ then
     echo Delete Container
     ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action delete -container_name GH_Container -dropvdb yes
 
-    #echo Delete Template - Don't delete as we are using a pre-existing template
-    #./dxtoolkit2/dx_ctl_js_template -d $DLPX_ENGINE -action delete -template_name $DLPX_TEMPLATE_NAME
 
 fi #end if

@@ -53,3 +53,8 @@ git branch -D DevBranch
 
 ## Generic commit all changes
 git add . && git commit -m ' ' && git push
+
+# DXToolkit
+./dxtoolkit2/dx_provision_vdb -d uvo1d59me84luxxamcy.vm.cld.sr -group DEV -sourcename Suitecrm_MASK -targetname GHvDB -dbname GHvDB -environment Sqlserver_Target -type mssql -envinst MSSQLSERVER
+
+./dxtoolkit2/dx_ctl_js_container -d uvo1d59me84luxxamcy.vm.cld.sr -action delete -container_name GH_Container -dropvdb yes
