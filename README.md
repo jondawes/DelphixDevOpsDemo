@@ -13,9 +13,11 @@ Deploy, refresh and delete an MSSQL instance based on github actions. Used the s
 
 Update the following files with the correct addresses for your environment:
 - data_ops.sh - edit Variables section at the top fo the script as noted in the file
+- Add in the username and password topt he api call on lines 73 and 74, using the lab login details for the Virtualisation Engine
 - dxtoolkit2/dxtools.conf - Update hostname and ip_address with the public URL of your Delphic engine e.g.:
     - `"hostname": "uvo1ezo6orp6mrdjwzd.vm.cld.sr",`
 	- `"ip_address": "uvo1ezo6orp6mrdjwzd.vm.cld.sr",`
+- Add in the username and password
 
 ## Start CloudShare Environments
 
