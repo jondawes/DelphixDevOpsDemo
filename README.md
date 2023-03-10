@@ -1,10 +1,10 @@
-# SugarCRM / MSSQL based DevOps Demo
+# MSSQL or Oracle based DevOps Demo
 
 Deploy, refresh and delete an MSSQL instance based on github actions. Used the standard Delphix Cloudshare lab environment to support a DevOps focussed demo.
 
 # Pre-Reqs
 
-## Create a New Reposiroty
+## Create a New Repository
 - Click the green "Use this template" button at the top of this page and select "Create a new repository"
 - Name the new repo whatever you would like in your own GitHub account
 - Set to private unless you want to share it, the repo doesn't need to be public to work
@@ -13,7 +13,7 @@ Deploy, refresh and delete an MSSQL instance based on github actions. Used the s
 
 Update the following files with the correct addresses for your environment:
 - data_ops.sh - edit Variables section at the top fo the script as noted in the file
-- Add in the username and password topt he api call on lines 73 and 74, using the lab login details for the Virtualisation Engine
+- Add in the username and password to the api call on lines 73 and 74, using the lab login details for the Virtualisation Engine
 - dxtoolkit2/dxtools.conf - Update hostname and ip_address with the public URL of your Delphic engine e.g.:
     - `"hostname": "uvo1ezo6orp6mrdjwzd.vm.cld.sr",`
 	- `"ip_address": "uvo1ezo6orp6mrdjwzd.vm.cld.sr",`
