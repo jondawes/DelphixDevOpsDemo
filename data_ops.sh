@@ -3,14 +3,36 @@
 ## Variables
 # Standard Core Demo Env details - MUST be updated for new demo environment
 DLPX_ENGINE=uvo1vinydalpsjaf3pm.vm.cld.sr
+DEMO_TARGET="MSSQL"     # MSSQL | ORACLE - operate on SuiteCRM or Ooracle data sources
 
-#Naming conventions, can be updated if desired. Defaults in comments
-DLPX_TEMPLATE_NAME="SuiteCRM Demo"      # "SuiteCRM Demo" (enables sharing bookmarks with the other containers that already exist)
-#GROUP_NAME=
-#dSOURCE_NAME=
-#TARGET_NAME=
-#DB_NAME=
-
+if [[ $DEMO_TARGET == "MSSQL" ]] 
+then
+    #Naming conventions, can be updated if desired. 
+    #MSSQL Values
+    DLPX_TEMPLATE_NAME="SuiteCRM Demo"      
+    GROUP_NAME="DEV"
+    dSOURCE_NAME="Suitecrm_MASK"
+    TARGET_NAME="GHvDB"
+    DB_NAME="GHvDB"
+    ENVIRONMENT="Sqlserver_Target"
+    DB_TYPE="mssql"
+    ENVINST="MSSQLSERVER"
+    SS_CONTAINER_NAME="GH_Container"
+    SS_CONTAINER_OWNER="dev"
+elif [[ $DEMO_TARGET == "ORACLE" ]]
+then
+    #Oracle Values
+    DLPX_TEMPLATE_NAME="Oracle Demo"      
+    GROUP_NAME="DEV"
+    dSOURCE_NAME="Oracle_MASK"
+    TARGET_NAME="GHvDB"
+    DB_NAME="GHvDB"
+    ENVIRONMENT="Oracle_Target"
+    DB_TYPE=oracle
+    ENVINST="/u01/oracle/oracle19c"  
+    SS_CONTAINER_NAME="Ansible_Container"
+    SS_CONTAINER_OWNER="dev"
+fi 
 
 ## End Variables
 
@@ -59,14 +81,14 @@ echo done!
 if [[ $parameterAction == "create" ]] 
 then
 
-    echo Provisioning vDB to Dev Group based on Suitecrm_MASK source
-    ./dxtoolkit2/dx_provision_vdb -d $DLPX_ENGINE -group DEV -sourcename Suitecrm_MASK -targetname GHvDB -dbname GHvDB -environment Sqlserver_Target -type mssql -envinst MSSQLSERVER
+    echo Provisioning vDB to Dev Group 
+    ./dxtoolkit2/dx_provision_vdb -d $DLPX_ENGINE -group $GROUP_NAME -sourcename $dSOURCE_NAME -targetname $TARGET_NAME -dbname $DB_NAME -environment $ENVIRONMENT -type $DB_TYPE -envinst $ENVINST
 
     echo Create Self-Service Container
-    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action create -container_def 'DEV,GHvDB' -container_name GH_Container -template_name "$DLPX_TEMPLATE_NAME" -container_owner dev -dontrefresh
+    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action create -container_def "$GROUP_NAME,$TARGET_NAME" -container_name $SS_CONTAINER_NAME -template_name "$DLPX_TEMPLATE_NAME" -container_owner $SS_CONTAINER_OWNER -dontrefresh
 
     echo Create Bookmark Starting Version 1.0
-    ./dxtoolkit2/dx_ctl_js_bookmarks -d $DLPX_ENGINE -bookmark_name "Starting Version 1.0" -bookmark_time latest -container_name GH_Container -action create -template_name $DLPX_TEMPLATE_NAME
+    ./dxtoolkit2/dx_ctl_js_bookmarks -d $DLPX_ENGINE -bookmark_name "Starting Version 1.0" -bookmark_time latest -container_name $SS_CONTAINER_NAME -action create -template_name $DLPX_TEMPLATE_NAME
 
 fi # end if
 
@@ -77,10 +99,10 @@ if [[ $parameterAction == "refresh" ]]
 then
 
     echo Refresh VDB Container 
-    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE  -container_name GH_Container -action refresh
+    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE  -container_name $SS_CONTAINER_NAME -action refresh
 
     echo Create Bookmark Starting Version 2.0
-    ./dxtoolkit2/dx_ctl_js_bookmarks  -d $DLPX_ENGINE -bookmark_name "Starting Version 2.0" -bookmark_time latest -container_name GH_Container -action create -template_name $DLPX_TEMPLATE_NAME
+    ./dxtoolkit2/dx_ctl_js_bookmarks  -d $DLPX_ENGINE -bookmark_name "Starting Version 2.0" -bookmark_time latest -container_name $SS_CONTAINER_NAME -action create -template_name $DLPX_TEMPLATE_NAME
 
 fi # end if
 
@@ -89,7 +111,7 @@ if [[ $parameterAction == "delete" ]]
 then
 
     echo Delete Container
-    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action delete -container_name GH_Container -dropvdb yes
+    ./dxtoolkit2/dx_ctl_js_container -d $DLPX_ENGINE -action delete -container_name $SS_CONTAINER_NAME -dropvdb yes
 
 
 fi #end if
