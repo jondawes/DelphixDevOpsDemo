@@ -70,8 +70,8 @@ curl -s -X POST -k --data @- http://$DLPX_ENGINE/resources/json/delphix/login \
 -b ~/cookies.txt -c ~/cookies.txt -H "Content-Type: application/json" <<EOF
 {
     "type": "LoginRequest",
-    "username": "admin",
-    "password": "Delphix_123!"
+    "username": "",
+    "password": ""
 }
 EOF
 
