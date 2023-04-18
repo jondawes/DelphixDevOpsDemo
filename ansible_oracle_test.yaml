@@ -4,3 +4,24 @@
   tasks:
     - name: Create VDB
       local_action: script ./data_ops.sh -a create 
+    - name: Validate VDB Creation
+      pause: 
+        prompt: Hit enter when ready
+
+- name: Test Provisioned Database
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: SQL Testing
+      local_action: script ./sqlpus_test.sh
+    - name: wait for input
+      pause: 
+        prompt: Verify SQL Output
+
+
+- name: Delete testing environment
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create VDB
+      local_action: script ./data_ops.sh -a delete 
