@@ -1,0 +1,6 @@
+- name: Create testing environment
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create VDB
+      local_action: script ./data_ops.sh -a create 
